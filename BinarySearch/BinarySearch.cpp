@@ -4,7 +4,7 @@ using namespace std;
 void binarySearch(int array[], int n, int k)
 {
     int start = 0;
-    int end = n-1;
+    int end = n - 1;
     int mid;
     while (start < end)
     {
@@ -25,7 +25,20 @@ void binarySearch(int array[], int n, int k)
             mid = (start + end) / 2;
         }
     }
-    cout << "not Found"<<endl;
+    cout << "not Found" << endl;
+}
+
+void linerSearch(int array[], int n, int k)
+{
+    for (int i = 0; i < n ; i++)
+    {
+        if (array[i] == k)
+        {
+            cout << "Found " << endl;
+            return;
+        }
+    }
+    cout << "not Found " << endl;
 }
 
 int main()
@@ -43,6 +56,7 @@ int main()
     cout << "Enter key " << endl;
     cin >> k;
     binarySearch(array, n, k);
+    linerSearch(array, n, k);
 
     return 0;
 }
