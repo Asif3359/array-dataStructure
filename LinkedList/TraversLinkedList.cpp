@@ -60,9 +60,22 @@ int main()
 
     LinkedList list;
 
-    list.append(1);
-    list.append(2);
-    list.append(3);
+    int choise = 1;
+
+    int number;
+    int ch;
+    for (int i = 1; i <= choise; i++)
+    {
+        cout << "Enter list Number  :";
+        cin >> number;
+        list.append(number);
+        cout << "Do you want To continue 0 / 1 :";
+        cin >> ch;
+        if (ch == 1)
+        {
+            choise = choise + 1;
+        }
+    }
 
     Node *current = list.getHead();
     while (current != nullptr)
