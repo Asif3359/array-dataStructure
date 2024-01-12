@@ -16,7 +16,11 @@ private:
     Node *tail;
 
 public:
-    LinkedList() : head(nullptr), tail(nullptr) {}
+    LinkedList()
+    {
+        head = nullptr;
+        tail = nullptr;
+    }
 
     ~LinkedList()
     {
