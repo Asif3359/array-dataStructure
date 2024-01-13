@@ -1,7 +1,7 @@
 #include <iostream>
 
 using namespace std;
-
+int count;
 struct Node
 {
     int data;
@@ -41,6 +41,7 @@ public:
             temp->next = newNode;
             temp = newNode;
         }
+        count++;
     }
 
     void insertFirst(int value)
@@ -49,6 +50,7 @@ public:
         newNode->data = value;
         newNode->next = head;
         head = newNode;
+        count++;
     }
     void insertLast(int value)
     {
@@ -62,6 +64,32 @@ public:
             temp = temp->next;
         }
         temp->next = newNode;
+        count++;
+    }
+
+    void insertAny(int value, int pos)
+    {
+        Node *newNode = new Node;
+        newNode->data = value;
+        if (pos > count)
+        {
+            cout << "this Position is not Valid" << endl;
+            return;
+        }
+        else
+        {
+            int i = 1;
+            temp = head;
+            while (i <= pos)
+            {
+                temp = temp->next;
+                cout << i << endl;
+                i++;
+            }
+            newNode->next = temp->next;
+            temp->next = newNode;
+        }
+        count++;
     }
 };
 
@@ -78,6 +106,8 @@ int main()
 
     list.insertLast(20);
 
+    list.insertAny(30, 2);
+
     Node *CurentNode = list.getHead();
 
     while (CurentNode != nullptr)
@@ -86,11 +116,8 @@ int main()
         CurentNode = CurentNode->next;
     }
 
-    while (CurentNode != nullptr)
-    {
-        cout << CurentNode->data << " ";
-        CurentNode = CurentNode->next;
-    }
+    cout << endl;
+    cout << count << endl;
 
     return 0;
 }
