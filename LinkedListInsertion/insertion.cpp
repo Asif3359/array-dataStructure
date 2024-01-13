@@ -50,6 +50,19 @@ public:
         newNode->next = head;
         head = newNode;
     }
+    void insertLast(int value)
+    {
+        Node *newNode = new Node;
+        newNode->data = value;
+        newNode->next = nullptr;
+        temp = head;
+
+        while (temp->next != nullptr)
+        {
+            temp = temp->next;
+        }
+        temp->next = newNode;
+    }
 };
 
 int main()
@@ -60,8 +73,10 @@ int main()
     list.createNode(2);
     list.createNode(3);
     list.createNode(4);
-    
+
     list.insertFirst(10);
+
+    list.insertLast(20);
 
     Node *CurentNode = list.getHead();
 
