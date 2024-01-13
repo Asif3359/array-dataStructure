@@ -83,13 +83,24 @@ public:
             while (i <= pos)
             {
                 temp = temp->next;
-                cout << i << endl;
                 i++;
             }
             newNode->next = temp->next;
             temp->next = newNode;
         }
         count++;
+    }
+
+    void getLength()
+    {
+        int i = 1;
+        temp = head;
+        while (temp->next != nullptr)
+        {
+            temp = temp->next;
+            i++;
+        }
+        cout << "Length of this List :" << i << endl;
     }
 };
 
@@ -107,6 +118,8 @@ int main()
     list.insertLast(20);
 
     list.insertAny(30, 2);
+
+    list.getLength();
 
     Node *CurentNode = list.getHead();
 
