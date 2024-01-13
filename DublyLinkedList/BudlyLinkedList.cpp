@@ -49,6 +49,18 @@ public:
             temp->next =nullptr;
         }
     }
+    void insertFirst(int value)
+    {
+        Node *newNode = new Node;
+
+        newNode->data = value;
+
+            newNode->next = head;
+            newNode->prev = nullptr;
+            head = newNode;
+    }
+
+
 };
 
 main()
@@ -60,6 +72,8 @@ main()
     list.CreatNode(3);
     list.CreatNode(4);
     list.CreatNode(5);
+
+    list.insertFirst(10);
 
     Node *current = list.getHead();
 
