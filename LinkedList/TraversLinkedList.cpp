@@ -53,7 +53,7 @@ public:
             tail = newNode;
         }
     }
-    Node *getHead() const
+    Node *getHead() 
     {
         return head;
     }
