@@ -8,6 +8,8 @@ struct Node
     Node *next;
 };
 
+int count;
+
 class DelateList
 {
 private:
@@ -42,6 +44,7 @@ public:
             temp->next = newNode;
             temp = newNode;
         }
+        count++;
     }
 
     void deleteFirst()
@@ -58,6 +61,7 @@ public:
             head = newNode->next;
             free(newNode);
         }
+        count--;
     }
     void deleteLast()
     {
@@ -78,6 +82,38 @@ public:
             newNode->next = nullptr;
             free(temp);
         }
+        count--;
+    }
+    void deleteAny(int pos)
+    {
+        Node *newNode = new Node;
+
+        if (pos > count)
+        {
+            cout << "your position is not valid " << endl;
+            return;
+        }
+        else
+        {
+            if (head == nullptr)
+            {
+                cout << "This List Is Empty " << endl;
+                return;
+            }
+            else
+            {
+                temp = head;
+                int i = 1;
+                while (i < pos)
+                {
+                    newNode = temp;
+                    temp = temp->next;
+                    i++;
+                }
+                newNode->next = temp->next;
+                free(temp);
+            }
+        }
     }
 };
 
@@ -93,7 +129,9 @@ int main()
 
     list.deleteFirst();
 
-    list.deleteLast();
+    list.deleteLast(); 
+
+    list.deleteAny(2);
 
     Node *current = list.getData();
 
