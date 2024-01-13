@@ -102,6 +102,24 @@ public:
         }
         cout << "Length of this List :" << i << endl;
     }
+
+    void reverseList()
+    {
+        Node *prevNode = nullptr;
+        Node *current = head;
+        Node *nextNode = head;
+
+        while (current != nullptr)
+        {
+            nextNode = nextNode->next;
+            current->next = prevNode;
+            prevNode = current;
+            current = nextNode;
+        }
+
+        // Update the head to the last node (new first node after reversal)
+        head = prevNode;
+    }
 };
 
 int main()
@@ -120,6 +138,8 @@ int main()
     list.insertAny(30, 2);
 
     list.getLength();
+
+    list.reverseList();
 
     Node *CurentNode = list.getHead();
 
