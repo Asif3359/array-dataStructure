@@ -46,7 +46,7 @@ public:
             temp->next = newNode;
             newNode->prev = temp;
             temp = newNode;
-            temp->next =nullptr;
+            temp->next = nullptr;
         }
     }
     void insertFirst(int value)
@@ -55,12 +55,24 @@ public:
 
         newNode->data = value;
 
-            newNode->next = head;
-            newNode->prev = nullptr;
-            head = newNode;
+        newNode->next = head;
+        newNode->prev = nullptr;
+        head = newNode;
     }
+    void insertLast(int value)
+    {
+        Node *newNode = new Node;
 
-
+        newNode->data = value;
+        newNode->next = nullptr;
+        temp = head;
+        while (temp->next != nullptr)
+        {
+            temp = temp->next;
+        }
+        temp->next = newNode;
+        temp->prev = temp;
+    }
 };
 
 main()
@@ -74,6 +86,8 @@ main()
     list.CreatNode(5);
 
     list.insertFirst(10);
+
+    list.insertLast(20);
 
     Node *current = list.getHead();
 
