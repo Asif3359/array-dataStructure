@@ -52,12 +52,22 @@ public:
     void deleteFirst()
     {
 
-        temp = head ;
-        head = head->next ;
-        head->prev = nullptr ;
+        temp = head;
+        head = head->next;
+        head->prev = nullptr;
         free(temp);
+    }
 
-        
+    void deleteLast()
+    {
+        temp = head;
+        while (temp->next != nullptr)
+        {
+            temp = temp->next;
+        }
+        temp = temp->prev;
+        temp->next = nullptr;
+        free(temp->next);
     }
 };
 
@@ -72,6 +82,7 @@ int main()
     list.creatNode(5);
 
     list.deleteFirst();
+    list.deleteLast();
 
     Node *current = list.getHead();
 
