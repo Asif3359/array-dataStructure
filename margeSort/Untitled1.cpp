@@ -57,13 +57,13 @@ int main()
     cout << " Enter Your Array Size :";
     int n ;
     cin >> n ;
-    int arr[n+1];
+    int arr[n];
     for (int i = 0 ; i< n ; i++)
     {
         cin>> arr[i] ;
     }
 
-    margeSort(arr , 0 , n);
+    margeSort(arr , 0 , n-1);
 
     for (int i = 0 ; i< n ; i++)
     {
