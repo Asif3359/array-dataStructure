@@ -1,87 +1,89 @@
 #include <iostream>
-
 using namespace std;
-void marge ( int arr[] , int first , int mid , int last)
+
+void marge(int arr[], int first, int mid, int last)
 {
-    int n1 = mid -first+1 ;
-    int n2 = last - mid ;
-    int arr1 [n1+1] ;
-    int arr2 [n2+1] ;
-
-
-    for (int i = 0 ; i< n1 ; i++)
+    // cout << first << mid << last << "";
+    int n1 = mid - first + 1;
+    int n2 = last - mid;
+    int arr1[n1]; // 3
+    int arr2[n2]; // 2
+    for (int i = 0; i < n1; i++)
     {
-        arr1[i] = arr[first +i];
-    }
-    for (int j = 0 ; j< n2 ; j++)
-    {
-        arr2[j] = arr[mid + j+ 1];
+        arr1[i] = arr[first + i]; // 3 4 1
     }
 
-    int i = 0 ;
-    int j = 0 ;
-    arr1 [n1+1]=1000 ;
-    arr2 [n2+1]=1000 ;
-
-    //while (i<n1 && j<n2)
-    for(int k = first ; k<last ; k++)
+    for (int j = 0; j < n2; j++)
     {
-        if(arr1[i] <= arr2[j])
+        arr2[j] = arr[mid + 1 + j]; // 9 2
+    }
+
+    int i = 0; // 0 ,1 , 2 3
+    int j = 0;
+    int k = first;
+    while (i < n1 && j < n2) // 3 ,2  [2]
+    {
+        if (arr1[i] <= arr2[j])
         {
-          arr[k] = arr1[i];
-          i++;
+            arr[k] = arr1[i];
+            i++;
         }
-        else{
-          arr[k] = arr2[j];
-          j++;
+        else
+        {
+            arr[k] = arr2[j];
+            j++;
         }
-    }
-
-   /* while (i<n1)
+        k++;
+    } // 3 , 4 , 1  ,
+    while (i < n1)
     {
         arr[k] = arr1[i];
-        i++ ;
-        k++ ;
+        i++;
+        k++;
     }
-    while (j<n2)
+    while (j < n2)
     {
         arr[k] = arr2[j];
-        j++ ;
-        k++ ;
-    } */
+        j++;
+        k++;
+    } // 3,4, 1,9,2
 }
 
-
-void margeSort ( int arr [] , int first , int last )
+void printArray(int A[], int size)
 {
-    int mid ;
-    if(first < last)
+    for (int i = 0; i < size; i++)
+        cout << A[i] << " ";
+    cout << endl;
+}
+
+void margeSort(int arr[], int first, int last)
+{
+    if (first < last)
     {
-        mid = first + (last -first ) / 2 ;
-        margeSort(arr , first , mid);
-        margeSort(arr , mid+1 , last);
+        int mid = first + (last - first) / 2;
 
-        marge(arr , first , mid , last);
+        margeSort(arr, first, mid);
+        margeSort(arr, mid + 1, last);
+
+        marge(arr, first, mid, last);
     }
-
 }
 
 int main()
 {
-    cout << " Enter Your Array Size :";
-    int n ;
-    cin >> n ;
-    int arr[n+1];
-    for (int i = 0 ; i< n ; i++)
+    // 3 4 1 9 2
+    cout << "Inter size of array :";
+    int n;
+    cin >> n;
+    cout << "Inter array element :";
+    int arr[100];
+    for (int i = 0; i < n; i++)
     {
-        cin>> arr[i] ;
+        cin >> arr[i];
     }
 
-    margeSort(arr , 0 , n);
+    margeSort(arr, 0, n);
+    printArray(arr, n);
 
-    for (int i = 0 ; i< n ; i++)
-    {
-        cout<< arr[i]<< " " ;
-    }
     return 0;
 }
